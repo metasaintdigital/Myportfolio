@@ -10,17 +10,26 @@
         html { scroll-behavior: smooth; }
         body { background-color: #020617; color: #e2e8f0; font-family: sans-serif; overflow-x: hidden; }
         
-        /* Desktop Hover Effects */
+        /* Optimized Logo & Card Logic */
+        .logo-img { 
+            filter: grayscale(0%) opacity(100%); 
+            transition: all 0.7s ease; 
+        }
+
+        /* Desktop Hover Effects (Only active above 1024px) */
         @media (min-width: 1024px) {
             .portal-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
             .portal-card:hover { box-shadow: 0 0 50px rgba(56, 189, 248, 0.1); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-5px); }
-            .logo-img { filter: grayscale(100%) opacity(20%); transition: all 0.7s ease; }
+            .logo-img { filter: grayscale(100%) opacity(20%); } 
             .group:hover .logo-img { filter: grayscale(0%) opacity(100%); transform: scale(1.1); }
+            
+            .logo-text { color: inherit; opacity: 0.2; }
+            .group:hover .logo-text { color: #fde047; opacity: 1; }
         }
 
-        /* Mobile Adjustments (Touch-friendly illumination) */
+        /* Mobile specific styling for the "L" text logo */
         @media (max-width: 1023px) {
-            .logo-img { filter: grayscale(0%) opacity(80%); } /* Stay colorful on mobile since there is no hover */
+            .logo-text { color: #fde047; opacity: 1; }
             .portal-card { border-color: rgba(255, 255, 255, 0.1); }
         }
 
@@ -98,37 +107,39 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div onclick="openPortal('eln')" class="cursor-pointer group relative p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-slate-900/20 portal-card aspect-square flex flex-col justify-between overflow-hidden">
-                <img src="ELNLogo.png" class="logo-img w-16 h-16 md:w-20 md:h-20 object-contain">
-                <div>
-                    <h3 class="text-xl md:text-2xl font-black text-white uppercase group-hover:text-[#d4af37] transition-colors duration-500">Empowered</h3>
+            
+            <div onclick="openPortal('eln')" class="cursor-pointer group relative p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-slate-900/40 portal-card lg:aspect-square flex flex-col justify-between overflow-hidden min-h-[250px] lg:min-h-0">
+                <img src="ELNLogo.png" class="logo-img w-24 h-24 md:w-20 md:h-20 object-contain">
+                <div class="mt-8 lg:mt-0">
+                    <h3 class="text-2xl font-black text-white uppercase group-hover:text-[#d4af37] transition-colors duration-500">Empowered</h3>
                     <p class="text-[9px] font-black text-slate-600 tracking-[0.4em] uppercase">Tech / Lead Gen</p>
                 </div>
             </div>
 
-            <div onclick="openPortal('dhb')" class="cursor-pointer group relative p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-slate-900/20 portal-card aspect-square flex flex-col justify-between overflow-hidden">
-                <img src="DhbPropertiess.png" class="logo-img w-16 h-16 md:w-20 md:h-20 object-contain">
-                <div>
-                    <h3 class="text-xl md:text-2xl font-black text-white uppercase group-hover:text-sky-400 transition-colors duration-500">DHB Properties</h3>
+            <div onclick="openPortal('dhb')" class="cursor-pointer group relative p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-slate-900/40 portal-card lg:aspect-square flex flex-col justify-between overflow-hidden min-h-[250px] lg:min-h-0">
+                <img src="DhbPropertiess.png" class="logo-img w-24 h-24 md:w-20 md:h-20 object-contain">
+                <div class="mt-8 lg:mt-0">
+                    <h3 class="text-2xl font-black text-white uppercase group-hover:text-sky-400 transition-colors duration-500">DHB Properties</h3>
                     <p class="text-[9px] font-black text-slate-600 tracking-[0.4em] uppercase">Real Estate</p>
                 </div>
             </div>
 
-            <div onclick="openPortal('altered')" class="cursor-pointer group relative p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-slate-900/20 portal-card aspect-square flex flex-col justify-between overflow-hidden">
-                <img src="alteredInfluence.png" class="logo-img w-16 h-16 md:w-20 md:h-20 object-contain">
-                <div>
-                    <h3 class="text-xl md:text-2xl font-black text-white uppercase group-hover:text-slate-200 transition-colors duration-500">Altered</h3>
+            <div onclick="openPortal('altered')" class="cursor-pointer group relative p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-slate-900/40 portal-card lg:aspect-square flex flex-col justify-between overflow-hidden min-h-[250px] lg:min-h-0">
+                <img src="alteredInfluence.png" class="logo-img w-24 h-24 md:w-20 md:h-20 object-contain">
+                <div class="mt-8 lg:mt-0">
+                    <h3 class="text-2xl font-black text-white uppercase group-hover:text-slate-200 transition-colors duration-500">Altered</h3>
                     <p class="text-[9px] font-black text-slate-600 tracking-[0.4em] uppercase">Fashion & Retail</p>
                 </div>
             </div>
 
-            <div onclick="openPortal('lumina')" class="cursor-pointer group relative p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-slate-900/20 portal-card aspect-square flex flex-col justify-between overflow-hidden">
-                <div class="text-5xl md:text-6xl font-black italic opacity-20 group-hover:opacity-100 group-hover:text-yellow-300 transition-all duration-700">L</div>
-                <div>
-                    <h3 class="text-xl md:text-2xl font-black text-white uppercase group-hover:text-yellow-300 transition-colors duration-500">Lumina Path</h3>
-                    <p class="text-[9px] font-black text-slate-600 tracking-[0.4em] uppercase">Education AI</p>
+            <div onclick="openPortal('lumina')" class="cursor-pointer group relative p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-slate-900/40 portal-card lg:aspect-square flex flex-col justify-between overflow-hidden min-h-[250px] lg:min-h-0">
+                <div class="logo-text text-5xl md:text-6xl font-black italic transition-all duration-700">L</div>
+                <div class="mt-8 lg:mt-0">
+                    <h3 class="text-2xl font-black text-white uppercase group-hover:text-yellow-300 transition-colors duration-500">Lumina Path</h3>
+                    <p class="text-[9px] font-black text-slate-600 tracking-[0.4em] uppercase">Children's Education</p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -145,9 +156,8 @@
     </footer>
 
     <script>
-        // ... (Keep your projectData object exactly as it is) ...
         const projectData = {
-            eln: { title: "Empowered Lifestyle Network", industry: "Tech / Lead Gen", color: "#eab308", ai: "Agentic Workflow Orchestration & Lead Scoring", how: "The onboarding tool functions as the entry point for an agentic AI system that scores leads in real-time. Natural Language Processing (NLP) categorizes needs and triggers personalized follow-up sequences based on 'success probability'.", result: "It transforms a standard sign-up process into an intelligent filter that identifies high-value partners and automates the initial stages of the business relationship.", url: "https://eln-onboarding.netlify.app/" },
+            eln: { title: "Empowered Lifestyle Network", industry: "Tech / Lead Gen", color: "#eab308", ai: "Agentic Workflow Orchestration & Lead Scoring", how: "The onboarding tool functions as the entry point for an agentic AI system that scores leads in real-time. Natural Language Processing (NLP) categorizes needs and triggers personalized follow-ups based on 'success probability'.", result: "It transforms a standard sign-up process into an intelligent filter that identifies high-value partners and automates the initial stages of the business relationship.", url: "https://eln-onboarding.netlify.app/" },
             dhb: { title: "DHB Properties", industry: "Real Estate", color: "#38bdf8", ai: "Predictive Behavioral Analytics & Dynamic Pricing", how: "We utilize Machine Learning algorithms to analyze hyper-local market trends and guest booking patterns. By processing historical demand data, the system predicts 'intent-to-stay' velocity, allowing for automated price optimization.", result: "This ensures that luxury short-term rentals maintain maximum occupancy at the highest market-clearing price, effectively removing the guesswork from asset management.", url: "https://dhbproperties.net/" },
             altered: { title: "Altered Influence", industry: "Fashion & Retail", color: "#cbd5e1", ai: "Computer Vision & Trend Forecasting", how: "This retail platform leverages Predictive Trend Engines to align inventory with social sentiment. By analyzing visual data across digital subcultures, the AI forecasts which designs—like the 'Monét' or 'Lemonade' collections—will resonate before the trend peaks.", result: "This reduces overproduction and ensures that every drop is backed by data-driven 'cultural relevance,' making the retail cycle more efficient and impactful.", url: "https://alteredinfluence.com/" },
             lumina: { title: "Lumina Path", industry: "Children's Education", color: "#fde047", ai: "ElevenLabs TTS & OpenAI Multimodal Learning", how: "This platform integrates high-fidelity voice synthesis and randomized shuffle algorithms to turn static flashcards into an interactive tutor. Using AI-driven voice feedback, the system identifies the child's progress and shuffles categories (Colors, Shapes, Letters) to prevent rote memorization.", result: "It transforms a simple digital deck into a sensory-rich 'Voice Tutor,' using neural voices to guide toddlers through mastery milestones while providing real-time data on pronunciation and recognition speed.", url: "https://toddler-flashcards-3da4c.web.app/" }
@@ -155,7 +165,6 @@
 
         function openPortal(id) {
             const p = projectData[id];
-            // Modal is now scrollable on small screens to prevent content cut-off
             const html = `
                 <div class="modal active" id="portal-modal">
                     <div class="bg-slate-950 border border-white/10 p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] max-w-2xl w-full mx-4 relative overflow-y-auto max-h-[90vh]">
